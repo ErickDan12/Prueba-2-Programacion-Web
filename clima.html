@@ -5,19 +5,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/clima.css" />
+        <script src="assets/js/clima.js" defer></script>
+
+
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Main -->
+				<!-- Manu clima -->
 					<div id="main">
 						<div class="inner">
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="index.html" class="logo"><strong>Diario</strong> El informante</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -30,8 +34,27 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>General</h1>
+										<h1>Consulta el Clima</h1>
 									</header>
+                                    <section class="weather-content">
+                                        <h1>Buscador de clima</h1>
+                                        <div class="result">
+                                        </div>
+                                        <form action="" method="POST" class="get-weather">
+                                            <select name="" id="city">
+                                                <option disabled selected value="">Selecciona tu cuidad</option>
+                                                <option value="Santiago">Santiago</option>
+                                                <option value="Temuco">Temuco</option>
+                                                <option value="La serena">La serena</option>
+                                                <option value="Puerto Montt">Puerto Montt</option>
+                                            </select>
+                                            <select name="" id="country">
+                                                <option disabled selected value="">País</option>
+                                                <option value="CL">Chile</option>
+                                            </select>
+                                            <input type="submit" name="" id="" value="Ver Clima">
+                                        </form>
+                                    </section>
 
 
 								</section>
