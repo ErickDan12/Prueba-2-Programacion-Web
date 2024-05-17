@@ -120,7 +120,7 @@
 								<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 								<script>
 									$(document).ready(function(){
-										// Validación en tiempo real para Nombre
+								
 										$("#nombre").on('input', function() {
 											var nombre = $(this).val();
 											var nombreValido = /^[A-Z][a-z]*$/;
@@ -130,8 +130,7 @@
 												$("#nombreError").text("");
 											}
 										});
-							
-										// Validación en tiempo real para Apellidos
+
 										$("#apellidos").on('input', function() {
 											var apellidos = $(this).val();
 											var apellidoValido = /^[A-Z][a-z]*$/;
@@ -141,8 +140,16 @@
 												$("#apellidosError").text("");
 											}
 										});
-							
-										// Validación y envío del formulario
+
+										$("#correo").on('input', function() {
+											var correo = $(this).val();
+											if (!correo.includes("@") || !correo.endsWith(".com")) {
+												$("#correoError").text("El correo debe contener '@' y terminar en '.com'.");
+											} else {
+												$("#correoError").text("");
+											}
+										});
+						
 										$("#enviarBtn").click(function(){
 											var nombre = $("#nombre").val();
 											var apellidos = $("#apellidos").val();
@@ -199,6 +206,7 @@
 									});
 								</script>
 							</section>
+							
 							
 							
 							
