@@ -42,57 +42,63 @@
 
 									<span class="images"><img src="images/collage.jpg" alt="" /></span>
 									<br>
-										<body>
+									<body>
+										<br>
+										<form id="registroForm">
+											<div class="row">
+											  <div class="col">
+												<input type="text" class="form-control" placeholder="Nombre" id="nombre">
+											  </div>
+											  <div class="col">
+												<input type="text" class="form-control" placeholder="Apellidos" id="apellidos">
+											  </div>
+											</div>
 											<br>
-											<form id="registroForm">
-												<div class="row">
-												  <div class="col">
-													<input type="text" class="form-control" placeholder="Nombre" id="nombre">
-												  </div>
-												  <div class="col">
-													<input type="text" class="form-control" placeholder="Apellidos" id="apellidos">
-												  </div>
-												</div>
-												<br>
-												<div class="form-group">
-												  <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico">
-												  <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
-												</div> 
-												<br>   
-												<select name="menu" id="categoria">
-													<option value="0">Elija una opción</option>
-													<option value="1">Policial</option>
-													<option value="2">Salud</option>
-													<option value="3">Internacional</option>
-												</select>
-												<br>
-												<textarea name="texto" rows="4" cols="40" placeholder="Escriba algo" id="texto"></textarea>
-												<br> 
-												Fecha: <input type="date" name="fecha" id="fecha">  
-												<br><br>
-												<button type="button" class="btn btn-primary" onclick="validarFormulario()">Enviar</button>
-											</form>
+											<div class="form-group">
+											  <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico">
+											  <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
+											</div> 
+											<br>   
+											<select name="menu" id="categoria">
+												<option value="0">Elija una opción</option>
+												<option value="1">Policial</option>
+												<option value="2">Salud</option>
+												<option value="3">Internacional</option>
+											</select>
+											<br>
+											<textarea name="texto" rows="4" cols="40" placeholder="Escriba algo" id="texto"></textarea>
+											<br> 
+											Fecha: <input type="date" name="fecha" id="fecha">  
+											<br><br>
+											<button type="button" class="btn btn-primary" onclick="validarFormulario()">Enviar</button>
+										</form>
 										
-											<script>
-												function validarFormulario() {
-													var nombre = document.getElementById("nombre").value;
-													var apellidos = document.getElementById("apellidos").value;
-													var correo = document.getElementById("correo").value;
-													var categoria = document.getElementById("categoria").value;
-													var texto = document.getElementById("texto").value;
-													var fecha = document.getElementById("fecha").value;
-												   
-									
-													if (nombre === "" || apellidos === "" || correo === "" || categoria === "0" || texto === "" || fecha === "") {
-														alert("Por favor, complete todos los campos.");
-														return;
-													}
-					
-													alert("¡Formulario enviado correctamente!");
+										<script>
+											function validarFormulario() {
+												var nombre = document.getElementById("nombre").value;
+												var apellidos = document.getElementById("apellidos").value;
+												var correo = document.getElementById("correo").value;
+												var categoria = document.getElementById("categoria").value;
+												var texto = document.getElementById("texto").value;
+												var fecha = document.getElementById("fecha").value;
+												
+												if (nombre === "" || apellidos === "" || correo === "" || categoria === "0" || texto === "" || fecha === "") {
+													alert("Por favor, complete todos los campos.");
+													return;
 												}
-											</script>
-										</body>
-										</html>
+									
+												if (!correo.includes("@") || !correo.endsWith(".com")) {
+													alert("Por favor, ingrese un correo electrónico válido que contenga '@' y termine en '.com'.");
+													return;
+												}
+									
+												alert("¡Formulario enviado correctamente!");
+											}
+										</script>
+									</body>
+				
+										
+									</html>
 
 
 								</section>
