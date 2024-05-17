@@ -143,6 +143,40 @@
 											}
 										</script>
 									</body>
+
+									<script>
+										function validarFormulario() {
+											var nombre = document.getElementById("nombre").value;
+											var apellidos = document.getElementById("apellidos").value;
+											var correo = document.getElementById("correo").value;
+											var categoria = document.getElementById("categoria").value;
+											var texto = document.getElementById("texto").value;
+											var fecha = document.getElementById("fecha").value;
+											
+											if (nombre === "" || apellidos === "" || correo === "" || categoria === "0" || texto === "" || fecha === "") {
+												alert("Por favor, complete todos los campos.");
+												return;
+											}
+									
+											if (!correo.includes("@") || !correo.endsWith(".com")) {
+												alert("Por favor, ingrese un correo electrónico válido que contenga '@' y termine en '.com'.");
+												return;
+											}
+									
+											alert("¡Formulario enviado correctamente!");
+											limpiarCampos();
+										}
+									
+										function limpiarCampos() {
+											document.getElementById("nombre").value = "";
+											document.getElementById("apellidos").value = "";
+											document.getElementById("correo").value = "";
+											document.getElementById("categoria").value = "0";
+											document.getElementById("texto").value = "";
+											document.getElementById("fecha").value = "";
+										}
+									</script>
+									
 				
 										
 									</html>
@@ -213,6 +247,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
 
 	</body>
 </html>
