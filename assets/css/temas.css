@@ -1,0 +1,18 @@
+.custom-btn {
+    color: #0f3afc; /* Cambia el color del texto a rojo */
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea las tarjetas a la derecha */
+    align-items: flex-end;
+}
+.card {
+    margin-right: 20px; /* Ajusta este valor para mover las tarjetas más a la derecha */
+}
+/* Ajuste de margen para las columnas en dispositivos medianos y superiores */
+@media (min-width: 768px) {
+    .col-md-6 {
+        margin-left: auto; /* Mueve las columnas a la derecha */
+    }
+}
