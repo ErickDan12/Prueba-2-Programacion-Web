@@ -9,6 +9,8 @@
 }
 .card {
     margin-right: 20px; /* Ajusta este valor para mover las tarjetas más a la derecha */
+    margin-bottom: 20px; /* Ajusta este valor para separar más las tarjetas cuando están una encima de la otra */
+
 }
 /* Ajuste de margen para las columnas en dispositivos medianos y superiores */
 @media (min-width: 768px) {
