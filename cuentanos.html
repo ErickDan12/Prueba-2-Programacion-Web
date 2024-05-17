@@ -76,108 +76,132 @@
                                 
 
 							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Cuentanos</h1>
-                                        <p>tus noticias, son las nuestras</p>
-									</header>
-
-									<span class="images"><img src="images/collage.jpg" alt="" /></span>
+							<section>
+								<header class="main">
+									<h1>Cuentanos</h1>
+									<p>tus noticias, son las nuestras</p>
+								</header>
+							
+								<span class="images"><img src="images/collage.jpg" alt="" /></span>
+								<br>
+								<br>
+								<form id="registroForm">
+									<div class="row">
+										<div class="col">
+											<input type="text" class="form-control" placeholder="Nombre" id="nombre">
+											<small id="nombreError" class="form-text text-danger"></small>
+										</div>
+										<div class="col">
+											<input type="text" class="form-control" placeholder="Apellidos" id="apellidos">
+											<small id="apellidosError" class="form-text text-danger"></small>
+										</div>
+									</div>
 									<br>
-									<body>
-										<br>
-										<form id="registroForm">
-											<div class="row">
-											  <div class="col">
-												<input type="text" class="form-control" placeholder="Nombre" id="nombre">
-											  </div>
-											  <div class="col">
-												<input type="text" class="form-control" placeholder="Apellidos" id="apellidos">
-											  </div>
-											</div>
-											<br>
-											<div class="form-group">
-											  <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico">
-											  <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
-											</div> 
-											<br>   
-											<select name="menu" id="categoria">
-												<option value="0">Elija una opción</option>
-												<option value="1">Policial</option>
-												<option value="2">Salud</option>
-												<option value="3">Internacional</option>
-											</select>
-											<br>
-											<textarea name="texto" rows="4" cols="40" placeholder="Escriba algo" id="texto"></textarea>
-											<br> 
-											Fecha: <input type="date" name="fecha" id="fecha">  
-											<br><br>
-											<button type="button" class="btn btn-primary" onclick="validarFormulario()">Enviar</button>
-										</form>
-										
-										<script>
-											function validarFormulario() {
-												var nombre = document.getElementById("nombre").value;
-												var apellidos = document.getElementById("apellidos").value;
-												var correo = document.getElementById("correo").value;
-												var categoria = document.getElementById("categoria").value;
-												var texto = document.getElementById("texto").value;
-												var fecha = document.getElementById("fecha").value;
-												
-												if (nombre === "" || apellidos === "" || correo === "" || categoria === "0" || texto === "" || fecha === "") {
-													alert("Por favor, complete todos los campos.");
-													return;
-												}
-									
-												if (!correo.includes("@") || !correo.endsWith(".com")) {
-													alert("Por favor, ingrese un correo electrónico válido que contenga '@' y termine en '.com'.");
-													return;
-												}
-									
-												alert("¡Formulario enviado correctamente!");
+									<div class="form-group">
+										<input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico">
+										<small id="correoError" class="form-text text-danger"></small>
+										<small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
+									</div> 
+									<br>   
+									<select name="menu" id="categoria">
+										<option value="0">Elija una opción</option>
+										<option value="1">Policial</option>
+										<option value="2">Salud</option>
+										<option value="3">Internacional</option>
+									</select>
+									<br>
+									<textarea name="texto" rows="4" cols="40" placeholder="Escriba algo" id="texto"></textarea>
+									<br> 
+									Fecha: <input type="date" name="fecha" id="fecha">  
+									<br><br>
+									<button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
+								</form>
+							
+								<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+								<script>
+									$(document).ready(function(){
+										// Validación en tiempo real para Nombre
+										$("#nombre").on('input', function() {
+											var nombre = $(this).val();
+											var nombreValido = /^[A-Z][a-z]*$/;
+											if (!nombre.match(nombreValido)) {
+												$("#nombreError").text("El nombre debe comenzar con una letra mayúscula y solo contener letras.");
+											} else {
+												$("#nombreError").text("");
 											}
-										</script>
-									</body>
-
-									<script>
-										function validarFormulario() {
-											var nombre = document.getElementById("nombre").value;
-											var apellidos = document.getElementById("apellidos").value;
-											var correo = document.getElementById("correo").value;
-											var categoria = document.getElementById("categoria").value;
-											var texto = document.getElementById("texto").value;
-											var fecha = document.getElementById("fecha").value;
-											
+										});
+							
+										// Validación en tiempo real para Apellidos
+										$("#apellidos").on('input', function() {
+											var apellidos = $(this).val();
+											var apellidoValido = /^[A-Z][a-z]*$/;
+											if (!apellidos.match(apellidoValido)) {
+												$("#apellidosError").text("El apellido debe comenzar con una letra mayúscula y solo contener letras.");
+											} else {
+												$("#apellidosError").text("");
+											}
+										});
+							
+										// Validación y envío del formulario
+										$("#enviarBtn").click(function(){
+											var nombre = $("#nombre").val();
+											var apellidos = $("#apellidos").val();
+											var correo = $("#correo").val();
+											var categoria = $("#categoria").val();
+											var texto = $("#texto").val();
+											var fecha = $("#fecha").val();
+							
+											var nombreValido = /^[A-Z][a-z]*$/;
+											var apellidoValido = /^[A-Z][a-z]*$/;
+							
+											var esValido = true;
+							
+											if (!nombre.match(nombreValido)) {
+												$("#nombreError").text("El nombre debe comenzar con una letra mayúscula y solo contener letras.");
+												esValido = false;
+											} else {
+												$("#nombreError").text("");
+											}
+							
+											if (!apellidos.match(apellidoValido)) {
+												$("#apellidosError").text("El apellido debe comenzar con una letra mayúscula y solo contener letras.");
+												esValido = false;
+											} else {
+												$("#apellidosError").text("");
+											}
+							
 											if (nombre === "" || apellidos === "" || correo === "" || categoria === "0" || texto === "" || fecha === "") {
 												alert("Por favor, complete todos los campos.");
-												return;
+												esValido = false;
 											}
-									
+							
 											if (!correo.includes("@") || !correo.endsWith(".com")) {
-												alert("Por favor, ingrese un correo electrónico válido que contenga '@' y termine en '.com'.");
-												return;
+												$("#correoError").text("Ingrese un correo electrónico válido que contenga '@' y termine en '.com'.");
+												esValido = false;
+											} else {
+												$("#correoError").text("");
 											}
-									
-											alert("¡Formulario enviado correctamente!");
-											limpiarCampos();
-										}
-									
+							
+											if (esValido) {
+												alert("¡Formulario enviado correctamente!");
+												limpiarCampos();
+											}
+										});
+							
 										function limpiarCampos() {
-											document.getElementById("nombre").value = "";
-											document.getElementById("apellidos").value = "";
-											document.getElementById("correo").value = "";
-											document.getElementById("categoria").value = "0";
-											document.getElementById("texto").value = "";
-											document.getElementById("fecha").value = "";
+											$("#nombre").val("");
+											$("#apellidos").val("");
+											$("#correo").val("");
+											$("#categoria").val("0");
+											$("#texto").val("");
+											$("#fecha").val("");
 										}
-									</script>
-									
-				
-										
-									</html>
-
-
-								</section>
+									});
+								</script>
+							</section>
+							
+							
+							
 
 						</div>
 					</div>
