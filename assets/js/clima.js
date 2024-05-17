@@ -7,13 +7,12 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (nameCity.value === '' || nameCountry.value === '') {
-        showError('Ambos campos son obligatorios...');
+        showError('Ambos campos son obligatorios...');// Controlador en caso de que no se ingrese nada
         return;
     }
 
     callAPI(nameCity.value, nameCountry.value);
-    //console.log(nameCity.value);
-    //console.log(nameCountry.value);
+
 })
 
 function callAPI(city, country){
@@ -26,12 +25,11 @@ function callAPI(city, country){
         })
         .then(dataJSON => {
             if (dataJSON.cod === '404') {
-                showError('Ciudad no encontrada...');
+                showError('Ciudad no encontrada...');//Controlador para versión (No lo usé porque daré las ciudades ya predeterminadas)
             } else {
                 clearHTML();
                 showWeather(dataJSON);
             }
-            //console.log(dataJSON);
         })
         .catch(error => {
             console.log(error);
