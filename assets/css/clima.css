@@ -52,15 +52,16 @@ form input[type="text"], form input[type="submit"], form select{
     box-sizing: border-box;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 9px;
     font-family: 'Montserrat', sans-serif;
+    
 }
 form input[type="submit"]{
     width: 100%;
     margin: 0 auto;
     cursor: pointer;
-    background-color: #df9d9d;
+    background-color: #e3a8a8;
     border: 1px solid #ffffff;
     color: #fff;
     font-weight: 600;
@@ -74,13 +75,3 @@ form input[type="submit"]:hover{
     color: rgb(217, 34, 34)!important;
 }
 
-.boton-clima {
-    background-color: transparent;
-    color: #ffffff; /* Texto blanco */
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-form .boton-clima {
-    color: #ffffff; /* Color blanco para el texto del botón */
-}
