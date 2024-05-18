@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="anio"></div>
+    <div id="top"></div>
+    <img src="" alt="">
+
+    <script>
+        const settings = {
+            async: true,
+            crossDomain: true,
+            url: 'https://imdb-top-100-movies.p.rapidapi.com/',
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f46f0bb8c1mshb13ff6eae79a328p1ab2ebjsndddd61495b32',
+                'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            console.log(response[14]); 
+            console.log(response[14].year); 
+            $("#anio").append(`<h1>Nombre : ${response[14].title}</h1>
+            <h1>Año : ${response[14].year}</h1>  
+            <h1>Descripcion : ${response[14].description}</h1>  
+            <img src="${response[14].image}" alt="">
+            ` )
+        });
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            $.each(response, function(i, item){
+                $("#top").append("<h1>"+item.rank+".- "+item.title+"<h1>")
+            })
+
+            
+
+        });
+    </script>
+</body>
+</html>
